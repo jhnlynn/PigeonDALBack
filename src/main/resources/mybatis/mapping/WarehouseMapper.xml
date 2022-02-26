@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pigeon.backend.pigeondalback.mapper.WarehouseMapper">
+  <resultMap id="BaseResultMap" type="pigeon.backend.pigeondalback.entity.Warehouse">
+    <id column="wid" jdbcType="TINYINT" property="wid" />
+    <result column="waddr1" jdbcType="VARCHAR" property="waddr1" />
+    <result column="waddr2" jdbcType="VARCHAR" property="waddr2" />
+    <result column="wcity" jdbcType="VARCHAR" property="wcity" />
+    <result column="wstate" jdbcType="VARCHAR" property="wstate" />
+    <result column="wcountry" jdbcType="VARCHAR" property="wcountry" />
+    <result column="wzip" jdbcType="BIGINT" property="wzip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    wid, waddr1, waddr2, wcity, wstate, wcountry, wzip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warehouse
+    where wid = #{wid,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from warehouse
+    where wid = #{wid,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="pigeon.backend.pigeondalback.entity.Warehouse">
+    insert into warehouse (wid, waddr1, waddr2, 
+      wcity, wstate, wcountry, 
+      wzip)
+    values (#{wid,jdbcType=TINYINT}, #{waddr1,jdbcType=VARCHAR}, #{waddr2,jdbcType=VARCHAR}, 
+      #{wcity,jdbcType=VARCHAR}, #{wstate,jdbcType=VARCHAR}, #{wcountry,jdbcType=VARCHAR}, 
+      #{wzip,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="pigeon.backend.pigeondalback.entity.Warehouse">
+    insert into warehouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="waddr1 != null">
+        waddr1,
+      </if>
+      <if test="waddr2 != null">
+        waddr2,
+      </if>
+      <if test="wcity != null">
+        wcity,
+      </if>
+      <if test="wstate != null">
+        wstate,
+      </if>
+      <if test="wcountry != null">
+        wcountry,
+      </if>
+      <if test="wzip != null">
+        wzip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        #{wid,jdbcType=TINYINT},
+      </if>
+      <if test="waddr1 != null">
+        #{waddr1,jdbcType=VARCHAR},
+      </if>
+      <if test="waddr2 != null">
+        #{waddr2,jdbcType=VARCHAR},
+      </if>
+      <if test="wcity != null">
+        #{wcity,jdbcType=VARCHAR},
+      </if>
+      <if test="wstate != null">
+        #{wstate,jdbcType=VARCHAR},
+      </if>
+      <if test="wcountry != null">
+        #{wcountry,jdbcType=VARCHAR},
+      </if>
+      <if test="wzip != null">
+        #{wzip,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pigeon.backend.pigeondalback.entity.Warehouse">
+    update warehouse
+    <set>
+      <if test="waddr1 != null">
+        waddr1 = #{waddr1,jdbcType=VARCHAR},
+      </if>
+      <if test="waddr2 != null">
+        waddr2 = #{waddr2,jdbcType=VARCHAR},
+      </if>
+      <if test="wcity != null">
+        wcity = #{wcity,jdbcType=VARCHAR},
+      </if>
+      <if test="wstate != null">
+        wstate = #{wstate,jdbcType=VARCHAR},
+      </if>
+      <if test="wcountry != null">
+        wcountry = #{wcountry,jdbcType=VARCHAR},
+      </if>
+      <if test="wzip != null">
+        wzip = #{wzip,jdbcType=BIGINT},
+      </if>
+    </set>
+    where wid = #{wid,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pigeon.backend.pigeondalback.entity.Warehouse">
+    update warehouse
+    set waddr1 = #{waddr1,jdbcType=VARCHAR},
+      waddr2 = #{waddr2,jdbcType=VARCHAR},
+      wcity = #{wcity,jdbcType=VARCHAR},
+      wstate = #{wstate,jdbcType=VARCHAR},
+      wcountry = #{wcountry,jdbcType=VARCHAR},
+      wzip = #{wzip,jdbcType=BIGINT}
+    where wid = #{wid,jdbcType=TINYINT}
+  </update>
+</mapper>

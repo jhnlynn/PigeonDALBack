@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pigeon.backend.pigeondalback.mapper.ShipmentMapper">
+  <resultMap id="BaseResultMap" type="pigeon.backend.pigeondalback.entity.Shipment">
+    <id column="sid" jdbcType="VARCHAR" property="sid" />
+    <result column="stype" jdbcType="TINYINT" property="stype" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="pigeon.backend.pigeondalback.entity.Shipment">
+    <result column="trackid" jdbcType="VARBINARY" property="trackid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sid, stype
+  </sql>
+  <sql id="Blob_Column_List">
+    trackid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shipment
+    where sid = #{sid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shipment
+    where sid = #{sid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    insert into shipment (sid, stype, trackid
+      )
+    values (#{sid,jdbcType=VARCHAR}, #{stype,jdbcType=TINYINT}, #{trackid,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    insert into shipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="stype != null">
+        stype,
+      </if>
+      <if test="trackid != null">
+        trackid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null">
+        #{stype,jdbcType=TINYINT},
+      </if>
+      <if test="trackid != null">
+        #{trackid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    update shipment
+    <set>
+      <if test="stype != null">
+        stype = #{stype,jdbcType=TINYINT},
+      </if>
+      <if test="trackid != null">
+        trackid = #{trackid,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    update shipment
+    set stype = #{stype,jdbcType=TINYINT},
+      trackid = #{trackid,jdbcType=VARBINARY}
+    where sid = #{sid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    update shipment
+    set stype = #{stype,jdbcType=TINYINT}
+    where sid = #{sid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pigeon.backend.pigeondalback.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="pigeon.backend.pigeondalback.entity.Product">
+    <id column="pid" jdbcType="TINYINT" property="pid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="request_rid" jdbcType="VARCHAR" property="requestRid" />
+    <result column="rptotal" jdbcType="BIGINT" property="rptotal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, pname, request_rid, rptotal
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from product
+    where pid = #{pid,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="pigeon.backend.pigeondalback.entity.Product">
+    insert into product (pid, pname, request_rid, 
+      rptotal)
+    values (#{pid,jdbcType=TINYINT}, #{pname,jdbcType=VARCHAR}, #{requestRid,jdbcType=VARCHAR}, 
+      #{rptotal,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="pigeon.backend.pigeondalback.entity.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="requestRid != null">
+        request_rid,
+      </if>
+      <if test="rptotal != null">
+        rptotal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=TINYINT},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="requestRid != null">
+        #{requestRid,jdbcType=VARCHAR},
+      </if>
+      <if test="rptotal != null">
+        #{rptotal,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pigeon.backend.pigeondalback.entity.Product">
+    update product
+    <set>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="requestRid != null">
+        request_rid = #{requestRid,jdbcType=VARCHAR},
+      </if>
+      <if test="rptotal != null">
+        rptotal = #{rptotal,jdbcType=BIGINT},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pigeon.backend.pigeondalback.entity.Product">
+    update product
+    set pname = #{pname,jdbcType=VARCHAR},
+      request_rid = #{requestRid,jdbcType=VARCHAR},
+      rptotal = #{rptotal,jdbcType=BIGINT}
+    where pid = #{pid,jdbcType=TINYINT}
+  </update>
+</mapper>
