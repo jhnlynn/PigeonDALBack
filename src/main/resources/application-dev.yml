@@ -37,6 +37,6 @@ logging:
 #  poolMaxWait: 500
 #
 ## config snowflake
-#snowflake:
-#  machineId: 1
-#  dataCenterId: 1
+snowflake:
+  machineId: 1
+  dataCenterId: 1
