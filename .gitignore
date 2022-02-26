@@ -32,3 +32,4 @@ build/
 .vscode/
 log/
 PigeonDAL.sql
+generatorConfig.xml

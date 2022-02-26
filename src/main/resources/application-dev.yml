@@ -6,8 +6,8 @@ spring:
     location: classpath:banner.txt
   datasource:
     username: root
-    password: PASSWORD
-    url: jdbc:mysql://localhost:3306/PigeonDAL?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQuery=true
+    password: 12345678
+    url: jdbc:mysql://localhost:3306/PigeonDAL_back?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQuery=true
 
 mybatis:
   ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######
