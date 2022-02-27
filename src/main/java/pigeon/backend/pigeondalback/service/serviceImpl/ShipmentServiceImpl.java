@@ -18,11 +18,11 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     public List<DonateRequestVO> getHistory(String uid, Long size, Long page) throws Exception {
         List<DonateRequestVO> donates;
-        HashMap<String, String> paramMap = new HashMap<>();
+        HashMap<String, Object> paramMap = new HashMap<>();
 
         paramMap.put("uid", uid);
-        paramMap.put("size", String.valueOf(size));
-        paramMap.put("page", String.valueOf(page));
+        paramMap.put("size", size);
+        paramMap.put("page", page);
 
         try {
             donates = batchMapper.getDonateHistory(paramMap);
@@ -49,4 +49,21 @@ public class ShipmentServiceImpl implements ShipmentService {
 
         return donate;
     }
+
+    public DonateRequestVO getRequestRecord(String uid, String shipId) throws Exception {
+        DonateRequestVO donate;
+        HashMap<String, String> paramMap = new HashMap<>();
+
+        paramMap.put("uid", uid);
+        paramMap.put("shipId", shipId);
+
+        try {
+            donate = batchMapper.getRequestRecord(paramMap);
+        } catch (Exception ex) {
+            throw new Exception("Thrown By PostS, " + ex);
+        }
+
+        return donate;
+    }
+
 }

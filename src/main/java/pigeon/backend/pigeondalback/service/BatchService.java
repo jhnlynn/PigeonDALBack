@@ -9,4 +9,6 @@ import javax.annotation.Resource;
 @Transactional
 public interface BatchService {
     void fillInDonate(Batch batch) throws Exception;
+
+    void fillInRequest(Batch batch) throws Exception;
 }
