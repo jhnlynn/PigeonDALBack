@@ -80,4 +80,7 @@
     set stype = #{stype,jdbcType=TINYINT}
     where sid = #{sid,jdbcType=VARCHAR}
   </update>
+  <select id="getRequestHistory" parameterType="pigeon.backend.pigeondalback.entity.Shipment">
+    select
+  </select>
 </mapper>
