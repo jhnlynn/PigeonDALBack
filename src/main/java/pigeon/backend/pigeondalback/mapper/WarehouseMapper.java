@@ -1,7 +1,9 @@
 package pigeon.backend.pigeondalback.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import pigeon.backend.pigeondalback.entity.Warehouse;
 
+@Mapper
 public interface WarehouseMapper {
     int deleteByPrimaryKey(Byte wid);
 

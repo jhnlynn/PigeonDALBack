@@ -52,12 +52,12 @@
 <!--        </environment>-->
 <!--    </environments>-->
 
-<!--    <mappers>-->
-<!--        <mapper resource="mybatis/mapping/PostMapper.xml"/>-->
-<!--        <mapper resource="mybatis/mapping/UserMapper.xml"/>-->
-<!--        <mapper resource="mybatis/mapping/CommunityMapper.xml"/>-->
-<!--        <mapper resource="mybatis/mapping/CommentMapper.xml"/>-->
-<!--    </mappers>-->
+    <mappers>
+        <mapper resource="mybatis/mapping/BatchMapper.xml"/>
+        <mapper resource="mybatis/mapping/ProductMapper.xml"/>
+        <mapper resource="mybatis/mapping/ShipmentMapper.xml"/>
+        <mapper resource="mybatis/mapping/WarehouseMapper.xml"/>
+    </mappers>
 
 </configuration>
 

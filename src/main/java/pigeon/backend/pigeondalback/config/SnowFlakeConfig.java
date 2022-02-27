@@ -18,6 +18,8 @@ public class SnowFlakeConfig {
     private long dataCenterId;
     private long machineId;
 
+    TwitterSnowFlake snowFlake = new TwitterSnowFlake(dataCenterId, machineId);
+
     public long getDataCenterId() {
         return dataCenterId;
     }
@@ -35,7 +37,6 @@ public class SnowFlakeConfig {
     }
 
     public long generateSnowFlakeId() {
-        TwitterSnowFlake snowFlake = new TwitterSnowFlake(dataCenterId, machineId);
         return snowFlake.nextId();
     }
 }

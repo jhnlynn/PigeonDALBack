@@ -11,7 +11,7 @@ import pigeon.backend.pigeondalback.service.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/shipment")
+@RequestMapping("api/v1/shipment")
 public class ShipmentController extends BaseController{
 //    @Autowired
 //    private IShipmentService shipmentService;

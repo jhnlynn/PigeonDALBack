@@ -12,7 +12,7 @@ public class TwitterSnowFlake {
     /**
      * START_STAMP
      */
-    private final static long START_STAMP = 1637863075532L;
+    private final static long START_STAMP = 1480166465631L;
 
     /**
      * BIT DISTRIBUTION

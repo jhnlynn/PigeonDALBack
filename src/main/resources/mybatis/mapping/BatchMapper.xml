@@ -1,164 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pigeon.backend.pigeondalback.mapper.BatchMapper">
-  <resultMap id="BaseResultMap" type="pigeon.backend.pigeondalback.entity.Batch">
-    <id column="bid" jdbcType="BIGINT" property="bid" />
-    <result column="bnum" jdbcType="BIGINT" property="bnum" />
-    <result column="bstatus" jdbcType="TINYINT" property="bstatus" />
-    <result column="btrack" jdbcType="VARCHAR" property="btrack" />
-    <result column="donations_did" jdbcType="VARCHAR" property="donationsDid" />
-    <result column="carrier_cid" jdbcType="TINYINT" property="carrierCid" />
-    <result column="warehouse_wid" jdbcType="TINYINT" property="warehouseWid" />
-    <result column="manufacturer_mid" jdbcType="TINYINT" property="manufacturerMid" />
-    <result column="product_pid" jdbcType="TINYINT" property="productPid" />
-    <result column="shipment_sid" jdbcType="VARCHAR" property="shipmentSid" />
-    <result column="request_rid" jdbcType="VARCHAR" property="requestRid" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    bid, bnum, bstatus, btrack, donations_did, carrier_cid, warehouse_wid, manufacturer_mid, 
+    <resultMap id="BaseResultMap" type="pigeon.backend.pigeondalback.entity.Batch">
+        <id column="bid" jdbcType="BIGINT" property="bid"/>
+        <result column="bnum" jdbcType="BIGINT" property="bnum"/>
+        <result column="bstatus" jdbcType="TINYINT" property="bstatus"/>
+        <result column="btrack" jdbcType="VARCHAR" property="btrack"/>
+        <result column="donations_did" jdbcType="VARCHAR" property="donationsDid"/>
+        <result column="warehouse_wid" jdbcType="TINYINT" property="warehouseWid"/>
+        <result column="product_pid" jdbcType="TINYINT" property="productPid"/>
+        <result column="shipment_sid" jdbcType="VARCHAR" property="shipmentSid"/>
+        <result column="request_rid" jdbcType="VARCHAR" property="requestRid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        bid, bnum, bstatus, btrack, donations_did, carrier_cid, warehouse_wid, manufacturer_mid,
     product_pid, shipment_sid, request_rid
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from batch
-    where bid = #{bid,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from batch
-    where bid = #{bid,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="pigeon.backend.pigeondalback.entity.Batch">
-    insert into batch (bid, bnum, bstatus, 
-      btrack, donations_did, carrier_cid, 
-      warehouse_wid, manufacturer_mid, product_pid, 
-      shipment_sid, request_rid)
-    values (#{bid,jdbcType=BIGINT}, #{bnum,jdbcType=BIGINT}, #{bstatus,jdbcType=TINYINT}, 
-      #{btrack,jdbcType=VARCHAR}, #{donationsDid,jdbcType=VARCHAR}, #{carrierCid,jdbcType=TINYINT}, 
-      #{warehouseWid,jdbcType=TINYINT}, #{manufacturerMid,jdbcType=TINYINT}, #{productPid,jdbcType=TINYINT}, 
-      #{shipmentSid,jdbcType=VARCHAR}, #{requestRid,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="pigeon.backend.pigeondalback.entity.Batch">
-    insert into batch
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="bid != null">
-        bid,
-      </if>
-      <if test="bnum != null">
-        bnum,
-      </if>
-      <if test="bstatus != null">
-        bstatus,
-      </if>
-      <if test="btrack != null">
-        btrack,
-      </if>
-      <if test="donationsDid != null">
-        donations_did,
-      </if>
-      <if test="carrierCid != null">
-        carrier_cid,
-      </if>
-      <if test="warehouseWid != null">
-        warehouse_wid,
-      </if>
-      <if test="manufacturerMid != null">
-        manufacturer_mid,
-      </if>
-      <if test="productPid != null">
-        product_pid,
-      </if>
-      <if test="shipmentSid != null">
-        shipment_sid,
-      </if>
-      <if test="requestRid != null">
-        request_rid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="bid != null">
-        #{bid,jdbcType=BIGINT},
-      </if>
-      <if test="bnum != null">
-        #{bnum,jdbcType=BIGINT},
-      </if>
-      <if test="bstatus != null">
-        #{bstatus,jdbcType=TINYINT},
-      </if>
-      <if test="btrack != null">
-        #{btrack,jdbcType=VARCHAR},
-      </if>
-      <if test="donationsDid != null">
-        #{donationsDid,jdbcType=VARCHAR},
-      </if>
-      <if test="carrierCid != null">
-        #{carrierCid,jdbcType=TINYINT},
-      </if>
-      <if test="warehouseWid != null">
-        #{warehouseWid,jdbcType=TINYINT},
-      </if>
-      <if test="manufacturerMid != null">
-        #{manufacturerMid,jdbcType=TINYINT},
-      </if>
-      <if test="productPid != null">
-        #{productPid,jdbcType=TINYINT},
-      </if>
-      <if test="shipmentSid != null">
-        #{shipmentSid,jdbcType=VARCHAR},
-      </if>
-      <if test="requestRid != null">
-        #{requestRid,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pigeon.backend.pigeondalback.entity.Batch">
-    update batch
-    <set>
-      <if test="bnum != null">
-        bnum = #{bnum,jdbcType=BIGINT},
-      </if>
-      <if test="bstatus != null">
-        bstatus = #{bstatus,jdbcType=TINYINT},
-      </if>
-      <if test="btrack != null">
-        btrack = #{btrack,jdbcType=VARCHAR},
-      </if>
-      <if test="donationsDid != null">
-        donations_did = #{donationsDid,jdbcType=VARCHAR},
-      </if>
-      <if test="carrierCid != null">
-        carrier_cid = #{carrierCid,jdbcType=TINYINT},
-      </if>
-      <if test="warehouseWid != null">
-        warehouse_wid = #{warehouseWid,jdbcType=TINYINT},
-      </if>
-      <if test="manufacturerMid != null">
-        manufacturer_mid = #{manufacturerMid,jdbcType=TINYINT},
-      </if>
-      <if test="productPid != null">
-        product_pid = #{productPid,jdbcType=TINYINT},
-      </if>
-      <if test="shipmentSid != null">
-        shipment_sid = #{shipmentSid,jdbcType=VARCHAR},
-      </if>
-      <if test="requestRid != null">
-        request_rid = #{requestRid,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where bid = #{bid,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pigeon.backend.pigeondalback.entity.Batch">
-    update batch
-    set bnum = #{bnum,jdbcType=BIGINT},
-      bstatus = #{bstatus,jdbcType=TINYINT},
-      btrack = #{btrack,jdbcType=VARCHAR},
-      donations_did = #{donationsDid,jdbcType=VARCHAR},
-      carrier_cid = #{carrierCid,jdbcType=TINYINT},
-      warehouse_wid = #{warehouseWid,jdbcType=TINYINT},
-      manufacturer_mid = #{manufacturerMid,jdbcType=TINYINT},
-      product_pid = #{productPid,jdbcType=TINYINT},
-      shipment_sid = #{shipmentSid,jdbcType=VARCHAR},
-      request_rid = #{requestRid,jdbcType=VARCHAR}
-    where bid = #{bid,jdbcType=BIGINT}
-  </update>
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from batch
+        where bid = #{bid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from batch
+        where bid = #{bid,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="pigeon.backend.pigeondalback.entity.Batch">
+        insert into batch (uid, bid, bnum, bstatus,
+                           btrack, donations_did,
+                           warehouse_wid, product_pid,
+                           shipment_sid, request_rid)
+        values (#{uid,jdbcType=VARCHAR}, #{bid,jdbcType=BIGINT}, #{bnum,jdbcType=BIGINT}, #{bstatus,jdbcType=TINYINT},
+                #{btrack,jdbcType=VARCHAR}, #{donationsDid,jdbcType=VARCHAR},
+                #{warehouseWid,jdbcType=TINYINT}, #{productPid,jdbcType=TINYINT},
+                #{shipmentSid,jdbcType=VARCHAR}, #{requestRid,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="pigeon.backend.pigeondalback.entity.Batch">
+        insert into batch
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                bid,
+            </if>
+            <if test="bnum != null">
+                bnum,
+            </if>
+            <if test="bstatus != null">
+                bstatus,
+            </if>
+            <if test="btrack != null">
+                btrack,
+            </if>
+            <if test="donationsDid != null">
+                donations_did,
+            </if>
+            <if test="carrierCid != null">
+                carrier_cid,
+            </if>
+            <if test="warehouseWid != null">
+                warehouse_wid,
+            </if>
+            <if test="manufacturerMid != null">
+                manufacturer_mid,
+            </if>
+            <if test="productPid != null">
+                product_pid,
+            </if>
+            <if test="shipmentSid != null">
+                shipment_sid,
+            </if>
+            <if test="requestRid != null">
+                request_rid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                #{bid,jdbcType=BIGINT},
+            </if>
+            <if test="bnum != null">
+                #{bnum,jdbcType=BIGINT},
+            </if>
+            <if test="bstatus != null">
+                #{bstatus,jdbcType=TINYINT},
+            </if>
+            <if test="btrack != null">
+                #{btrack,jdbcType=VARCHAR},
+            </if>
+            <if test="donationsDid != null">
+                #{donationsDid,jdbcType=VARCHAR},
+            </if>
+            <if test="carrierCid != null">
+                #{carrierCid,jdbcType=TINYINT},
+            </if>
+            <if test="warehouseWid != null">
+                #{warehouseWid,jdbcType=TINYINT},
+            </if>
+            <if test="manufacturerMid != null">
+                #{manufacturerMid,jdbcType=TINYINT},
+            </if>
+            <if test="productPid != null">
+                #{productPid,jdbcType=TINYINT},
+            </if>
+            <if test="shipmentSid != null">
+                #{shipmentSid,jdbcType=VARCHAR},
+            </if>
+            <if test="requestRid != null">
+                #{requestRid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pigeon.backend.pigeondalback.entity.Batch">
+        update batch
+        <set>
+            <if test="bnum != null">
+                bnum = #{bnum,jdbcType=BIGINT},
+            </if>
+            <if test="bstatus != null">
+                bstatus = #{bstatus,jdbcType=TINYINT},
+            </if>
+            <if test="btrack != null">
+                btrack = #{btrack,jdbcType=VARCHAR},
+            </if>
+            <if test="donationsDid != null">
+                donations_did = #{donationsDid,jdbcType=VARCHAR},
+            </if>
+            <if test="carrierCid != null">
+                carrier_cid = #{carrierCid,jdbcType=TINYINT},
+            </if>
+            <if test="warehouseWid != null">
+                warehouse_wid = #{warehouseWid,jdbcType=TINYINT},
+            </if>
+            <if test="manufacturerMid != null">
+                manufacturer_mid = #{manufacturerMid,jdbcType=TINYINT},
+            </if>
+            <if test="productPid != null">
+                product_pid = #{productPid,jdbcType=TINYINT},
+            </if>
+            <if test="shipmentSid != null">
+                shipment_sid = #{shipmentSid,jdbcType=VARCHAR},
+            </if>
+            <if test="requestRid != null">
+                request_rid = #{requestRid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where bid = #{bid,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="pigeon.backend.pigeondalback.entity.Batch">
+        update batch
+        set bnum          = #{bnum,jdbcType=BIGINT},
+            bstatus       = #{bstatus,jdbcType=TINYINT},
+            btrack        = #{btrack,jdbcType=VARCHAR},
+            donations_did = #{donationsDid,jdbcType=VARCHAR},
+            warehouse_wid = #{warehouseWid,jdbcType=TINYINT},
+            product_pid   = #{productPid,jdbcType=TINYINT},
+            shipment_sid  = #{shipmentSid,jdbcType=VARCHAR},
+            request_rid   = #{requestRid,jdbcType=VARCHAR}
+        where bid = #{bid,jdbcType=BIGINT}
+    </update>
 </mapper>

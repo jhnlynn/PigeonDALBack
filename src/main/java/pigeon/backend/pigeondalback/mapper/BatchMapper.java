@@ -1,7 +1,9 @@
 package pigeon.backend.pigeondalback.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import pigeon.backend.pigeondalback.entity.Batch;
 
+@Mapper
 public interface BatchMapper {
     int deleteByPrimaryKey(Long bid);
 

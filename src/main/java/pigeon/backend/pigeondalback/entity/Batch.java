@@ -1,6 +1,13 @@
 package pigeon.backend.pigeondalback.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 public class Batch {
+    private String uid;
+
     private Long bid;
 
     private Long bnum;
@@ -11,11 +18,11 @@ public class Batch {
 
     private String donationsDid;
 
-    private Byte carrierCid;
+//    private Byte carrierCid;
 
     private Byte warehouseWid;
 
-    private Byte manufacturerMid;
+//    private Byte manufacturerMid;
 
     private Byte productPid;
 
@@ -23,6 +30,7 @@ public class Batch {
 
     private String requestRid;
 
+    @XmlElement(name="bId")
     public Long getBid() {
         return bid;
     }
@@ -31,6 +39,7 @@ public class Batch {
         this.bid = bid;
     }
 
+    @XmlElement(name="bNum")
     public Long getBnum() {
         return bnum;
     }
@@ -39,6 +48,7 @@ public class Batch {
         this.bnum = bnum;
     }
 
+    @XmlElement(name="bStatus")
     public Byte getBstatus() {
         return bstatus;
     }
@@ -63,13 +73,21 @@ public class Batch {
         this.donationsDid = donationsDid == null ? null : donationsDid.trim();
     }
 
-    public Byte getCarrierCid() {
-        return carrierCid;
+    public String getUid() {
+        return uid;
     }
 
-    public void setCarrierCid(Byte carrierCid) {
-        this.carrierCid = carrierCid;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
+
+    //    public Byte getCarrierCid() {
+//        return carrierCid;
+//    }
+//
+//    public void setCarrierCid(Byte carrierCid) {
+//        this.carrierCid = carrierCid;
+//    }
 
     public Byte getWarehouseWid() {
         return warehouseWid;
@@ -79,13 +97,13 @@ public class Batch {
         this.warehouseWid = warehouseWid;
     }
 
-    public Byte getManufacturerMid() {
-        return manufacturerMid;
-    }
-
-    public void setManufacturerMid(Byte manufacturerMid) {
-        this.manufacturerMid = manufacturerMid;
-    }
+//    public Byte getManufacturerMid() {
+//        return manufacturerMid;
+//    }
+//
+//    public void setManufacturerMid(Byte manufacturerMid) {
+//        this.manufacturerMid = manufacturerMid;
+//    }
 
     public Byte getProductPid() {
         return productPid;
@@ -109,5 +127,21 @@ public class Batch {
 
     public void setRequestRid(String requestRid) {
         this.requestRid = requestRid == null ? null : requestRid.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Batch{" +
+                "uid='" + uid + '\'' +
+                ", bid=" + bid +
+                ", bnum=" + bnum +
+                ", bstatus=" + bstatus +
+                ", btrack='" + btrack + '\'' +
+                ", donationsDid='" + donationsDid + '\'' +
+                ", warehouseWid=" + warehouseWid +
+                ", productPid=" + productPid +
+                ", shipmentSid='" + shipmentSid + '\'' +
+                ", requestRid='" + requestRid + '\'' +
+                '}';
     }
 }

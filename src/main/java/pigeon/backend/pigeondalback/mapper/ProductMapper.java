@@ -1,7 +1,9 @@
 package pigeon.backend.pigeondalback.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import pigeon.backend.pigeondalback.entity.Product;
 
+@Mapper
 public interface ProductMapper {
     int deleteByPrimaryKey(Byte pid);
 
