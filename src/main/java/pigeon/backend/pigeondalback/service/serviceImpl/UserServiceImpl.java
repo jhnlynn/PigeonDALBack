@@ -9,8 +9,8 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
-//    @Override
-//    public User findById(Integer id) {
-//        User result = userMapper.findBy
-//    }
+    @Override
+    public void register(User user) {
+       //
+    }
 }

@@ -1,19 +1,24 @@
 package pigeon.backend.pigeondalback.entity;
 
 public class Product {
-    private Byte pid;
 
+    // Product Id
+    private Integer pid;
+
+    // Product Name
     private String pname;
 
-    private String requestRid;
+    // Request ID
+    private Integer rid;
 
-    private Long rptotal;
+    // Request Total Number
+    private Integer rtotal;
 
-    public Byte getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(Byte pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 
@@ -25,19 +30,17 @@ public class Product {
         this.pname = pname == null ? null : pname.trim();
     }
 
-    public String getRequestRid() {
-        return requestRid;
+    public Integer getRid() {
+        return rid;
     }
 
-    public void setRequestRid(String requestRid) {
-        this.requestRid = requestRid == null ? null : requestRid.trim();
+    public void setRid(Integer rid) { this.rid = rid; }
+
+    public Integer getRtotal() {
+        return rtotal;
     }
 
-    public Long getRptotal() {
-        return rptotal;
-    }
-
-    public void setRptotal(Long rptotal) {
-        this.rptotal = rptotal;
+    public void setRtotal(Integer rtotal) {
+        this.rtotal = rtotal;
     }
 }

@@ -1,49 +1,61 @@
 package pigeon.backend.pigeondalback.entity;
 
 public class Batch {
-    private Long bid;
 
-    private Long bnum;
+    // UUID
+    private String uuid;
 
-    private Byte bstatus;
+    // Batch ID
+    private Integer bid;
 
+    // Batch Total Number
+    private Integer btotal;
+
+    // Status: Processing, Shipped, Delivered
+    private Integer bstatus;
+
+    // Tracking Number: 1ZX2887A4407123066
     private String btrack;
 
-    private String donationsDid;
+    // Donation ID
+    private Integer did;
 
-    private Byte carrierCid;
+    // Shipment ID
+    private Integer sid;
 
-    private Byte warehouseWid;
+    // Warehouse ID
+    private Integer wid;
 
-    private Byte manufacturerMid;
+    // Manufacturer ID
+    private Integer mid;
 
-    private Byte productPid;
+    // Product ID
+    private Integer pid;
 
-    private String shipmentSid;
+    // Request ID
+    private Integer rid;
 
-    private String requestRid;
-
-    public Long getBid() {
+    public Integer getBid() {
         return bid;
     }
 
-    public void setBid(Long bid) {
+    public void setBid(Integer bid) {
         this.bid = bid;
     }
 
-    public Long getBnum() {
-        return bnum;
+    public Integer getBtotal() {
+        return btotal;
     }
 
-    public void setBnum(Long bnum) {
-        this.bnum = bnum;
+    public void setBtotal(Integer btotal) {
+        this.btotal = btotal;
     }
 
-    public Byte getBstatus() {
+    public Integer getBstatus() {
         return bstatus;
     }
 
-    public void setBstatus(Byte bstatus) {
+    public void setBstatus(Integer bstatus) {
         this.bstatus = bstatus;
     }
 
@@ -55,59 +67,31 @@ public class Batch {
         this.btrack = btrack == null ? null : btrack.trim();
     }
 
-    public String getDonationsDid() {
-        return donationsDid;
+    public Integer getDid() {
+        return did;
     }
 
-    public void setDonationsDid(String donationsDid) {
-        this.donationsDid = donationsDid == null ? null : donationsDid.trim();
+    public void setDid(Integer did) { this.did = did; }
+
+    public Integer getWid() { return wid; }
+
+    public void setWarehouseWid(Integer wid) { this.wid = wid; }
+
+    public Integer getManufacturerMid() { return mid; }
+
+    public void setManufacturerMid(Integer mid) { this.mid = mid; }
+
+    public Integer getPid() { return pid; }
+
+    public void setProductPid(Integer pid) { this.pid = pid; }
+
+    public Integer getShipmentSid() {
+        return sid;
     }
 
-    public Byte getCarrierCid() {
-        return carrierCid;
-    }
+    public void setShipmentSid(Integer sid) { this.sid = sid; }
 
-    public void setCarrierCid(Byte carrierCid) {
-        this.carrierCid = carrierCid;
-    }
+    public Integer getRid() { return rid; }
 
-    public Byte getWarehouseWid() {
-        return warehouseWid;
-    }
-
-    public void setWarehouseWid(Byte warehouseWid) {
-        this.warehouseWid = warehouseWid;
-    }
-
-    public Byte getManufacturerMid() {
-        return manufacturerMid;
-    }
-
-    public void setManufacturerMid(Byte manufacturerMid) {
-        this.manufacturerMid = manufacturerMid;
-    }
-
-    public Byte getProductPid() {
-        return productPid;
-    }
-
-    public void setProductPid(Byte productPid) {
-        this.productPid = productPid;
-    }
-
-    public String getShipmentSid() {
-        return shipmentSid;
-    }
-
-    public void setShipmentSid(String shipmentSid) {
-        this.shipmentSid = shipmentSid == null ? null : shipmentSid.trim();
-    }
-
-    public String getRequestRid() {
-        return requestRid;
-    }
-
-    public void setRequestRid(String requestRid) {
-        this.requestRid = requestRid == null ? null : requestRid.trim();
-    }
+    public void setRid(Integer rid) { this.rid = rid; }
 }

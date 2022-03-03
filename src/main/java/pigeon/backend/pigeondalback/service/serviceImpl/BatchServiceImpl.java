@@ -1,8 +1,11 @@
 package pigeon.backend.pigeondalback.service.serviceImpl;
 
-import org.springframework.beans.factory.annotation.*;
+import pigeon.backend.pigeondalback.config.SnowFlakeConfig;
+import pigeon.backend.pigeondalback.entity.Batch;
 import pigeon.backend.pigeondalback.mapper.*;
-import pigeon.backend.pigeondalback.service.IUserService;
+import pigeon.backend.pigeondalback.service.IBatchService;
+
+import javax.annotation.Resource;
 /**
  * <p>
  *
@@ -11,13 +14,38 @@ import pigeon.backend.pigeondalback.service.IUserService;
  * @author Johannes
  * @date 2/26/22
  */
-public class BatchServiceImpl {
-    @Autowired
-    private BatchMapper batchMapper;
+public class BatchServiceImpl implements IBatchService {
+    @Resource
+    BatchMapper batchMapper;
 
-    @Autowired
-    private ProductServiceImpl productService;
+    @Override
+    public void fillInDonate(Batch batch) throws Exception {
+        SnowFlakeConfig snow = new SnowFlakeConfig();
+        batch.setBid((int) snow.generateSnowFlakeId());
+        batch.setDid((int) (snow.generateSnowFlakeId()));
+        batch.setRequestRid("0"); // get by tracking
+        batch.setBstatus(1); // get by tracking
+        batch.setShipmentSid((int) snow.generateSnowFlakeId());
+        batch.setProductPid(1); // ?
+        try {
+            batchMapper.insert(batch);
+        } catch (Exception ex) {
+            throw new Exception("Thrown By DonateServiceImpl fillInDonate" + ex);
+        }
+    }
 
-    @Autowired
-    private IUserService userService;
+    @Override
+    public void fillInRequest(Batch batch) throws Exception {
+        SnowFlakeConfig snow = new SnowFlakeConfig();
+        batch.setWarehouseWid((Integer)1); // get by tracking
+        batch.setRequestRid("0"); // get by tracking
+        batch.setBstatus((Integer) 1); // get by tracking
+        batch.setProductPid(1); // ?
+        batch.setRequestRid(String.valueOf(snow.generateSnowFlakeId()));
+        try {
+            batchMapper.insert(batch);
+        } catch (Exception ex) {
+            throw new Exception("Thrown By DonateServiceImpl fillInDonate" + ex);
+        }
+    }
 }

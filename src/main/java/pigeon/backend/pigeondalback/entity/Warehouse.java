@@ -1,7 +1,7 @@
 package pigeon.backend.pigeondalback.entity;
 
 public class Warehouse {
-    private Byte wid;
+    private Integer wid;
 
     private String waddr1;
 
@@ -15,11 +15,11 @@ public class Warehouse {
 
     private Long wzip;
 
-    public Byte getWid() {
+    public Integer getWid() {
         return wid;
     }
 
-    public void setWid(Byte wid) {
+    public void setWid(Integer wid) {
         this.wid = wid;
     }
 

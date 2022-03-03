@@ -1,25 +1,41 @@
 package pigeon.backend.pigeondalback.entity;
 
 public class User {
-    private String uid;
 
+    // User UUID
+    private String uuid;
+
+    // User ID
+    private Integer uid;
+
+    // First Name
     private String ufname;
 
+    // Last Name
     private String ulname;
 
-    private Double usex;
+    // Male: 0, Female: 1
+    private Integer usex;
 
+    // Email Address
     private String uemail;
 
-    private Byte utype;
+    // Common: 0, Admin: 1
+    private Integer utype;
 
-    public String getUid() {
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid == null ? null : uuid.trim();
+    }
+
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
-    }
+    public void setUid(Integer uid) { this.uid = uid; }
 
     public String getUfname() {
         return ufname;
@@ -37,11 +53,11 @@ public class User {
         this.ulname = ulname == null ? null : ulname.trim();
     }
 
-    public Double getUsex() {
+    public Integer getUsex() {
         return usex;
     }
 
-    public void setUsex(Double usex) {
+    public void setUsex(Integer usex) {
         this.usex = usex;
     }
 
@@ -53,11 +69,11 @@ public class User {
         this.uemail = uemail == null ? null : uemail.trim();
     }
 
-    public Byte getUtype() {
+    public Integer getUtype() {
         return utype;
     }
 
-    public void setUtype(Byte utype) {
+    public void setUtype(Integer utype) {
         this.utype = utype;
     }
 }

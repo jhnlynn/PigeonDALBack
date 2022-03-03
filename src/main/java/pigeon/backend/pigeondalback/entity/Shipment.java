@@ -1,33 +1,35 @@
 package pigeon.backend.pigeondalback.entity;
 
 public class Shipment {
-    private String sid;
 
-    private Byte stype;
+    // Shipment ID
+    private Integer sid;
 
-    private byte[] trackid;
+    private Integer stype;
 
-    public String getSid() {
+    private String[] trackNumber;
+
+    public Integer getSid() {
         return sid;
     }
 
-    public void setSid(String sid) {
-        this.sid = sid == null ? null : sid.trim();
+    public void setSid(Integer sid) {
+        this.sid = sid;
     }
 
-    public Byte getStype() {
+    public Integer getStype() {
         return stype;
     }
 
-    public void setStype(Byte stype) {
+    public void setStype(Integer stype) {
         this.stype = stype;
     }
 
-    public byte[] getTrackid() {
-        return trackid;
+    public String[] getTrackNumber() {
+        return trackNumber;
     }
 
-    public void setTrackid(byte[] trackid) {
-        this.trackid = trackid;
+    public void setTrackNumber(String[] trackNumber) {
+        this.trackNumber = trackNumber;
     }
 }
